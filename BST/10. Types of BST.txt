@@ -1,0 +1,24 @@
+Height ke barabar kaam to search : O(h)
+Insertion: effetively like search: O(h)
+Deletion: d work to find the node to be deleted
+d' work to search minm in its right subtree
+d' work to delete the minm -> d+d'+d' < O(2*h)
+
+since height = O(n) possible, its not balanced
+which is slow.
+
+
+we want BST to be balanaced
+
+
+Balanced Tree: 
+
+for every node, h(nodes left subtree) - h(nodes right subtree) <= 1
+->O(log n) logn is max height of balanced BST.
+
+
+How to make sure tree stays balanced?
+We have BST types: (which maintain balance while we insert elements)
+1. AVL tree     idea: rotation idea to maintain height
+2. Red Black Tree
+3. 2-4 Tree
