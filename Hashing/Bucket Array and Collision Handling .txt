@@ -1,0 +1,63 @@
+
+/*
+Keys and Values: 
+Store krne me time na lage, access krne me time na lge.
+Lets use arrays, see
+Call this bucket array, hmare paas key ayi
+We want a idx corresponding to this key, and store value at that idx
+This function to convert key to idx->hash function
+
+2 parts of hash function:
+a. hash code : uniform distribution ho
+
+                some value calc, depending upon diff types of keys, various functions can be used for integers
+                for strings, various ways.
+                maybe, sum of ascii values , but some string values can have same hash code like abc, cba
+                A better func would be treating string as integer to some base p
+                char 'a'*p^3 + 'b'*p^2 + ... +'d', usually p is prime no
+
+                for diff keys, differnt types of functions are used
+                for student, his object address is taken and converted to hashcode and then through compression func.
+
+b. compression function : compresses hashcode wothin a range. %bucket size
+
+
+There is still some problem...
+there are inf possible strings, but our bucket size is limited, do strings same jagah jane ki koshish krrhe
+
+We have to handle this collision
+
+There are no two ways about it, we have to adjust both keys at the same idx in bucket array
+What we can do is, make this array not of integers, but of LL, so at the same idx, many are possible
+
+1.Collision Handling:
+    a. Closed hashing:  (Seperate Chaining as explained above)
+
+    b. Open addessing:
+
+        if we have a key alrady placed at some idx in bucket array
+        we need to find an alternate key for this:
+
+        Hi(a) = Hf(a) + f(i);
+        Hf(a) = original idx
+
+        First req of f(i) is f(0) = 0, i.e. first allotted idx pe hi first key store hogi
+
+        We can apply above formula multile times, if it goes out of range or collides
+        f(I) is different for differnt addessing techniques.
+
+        -> Linear probling: f(i) = i; ek -ek krke aage try krna
+        -> Quadratic probing: f(i) = i^2 run away as fast as possible
+
+        ->Double Hashing: taking f(i) as some other hash function
+                i.e. f(i) -> i * h'(a);
+                for diff i, we'll keep on increasing i, if f(i) still keeps colliding
+
+
+In practice, seperate chaining works thik thak also. So, we'll implement it
+
+
+
+
+
+
